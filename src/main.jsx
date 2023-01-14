@@ -6,5 +6,6 @@ import resetCSS from "./styles/reset.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <App />
+    <resetCSS />
   </>
 );

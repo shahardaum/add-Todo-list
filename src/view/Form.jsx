@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../state/todo.slice";
 const Form = () => {
+  const [input, setInput] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleAddTodo = (e) => {
+    e.preventDefault();
+
+    dispatch(addTodo(input));
+  };
+
   return (
     <Label>
-      <input type="text" placeholder="Your Next Task"></input>
-      <button>Add Todo</button>
+      <input
+        type="text"
+        placeholder="Your Next Task"
+        onInput={(e) => setInput(e.target.value)}
+      ></input>
+      <button onClick={handleAddTodo}>Add Todo</button>
     </Label>
   );
 };
@@ -19,6 +35,7 @@ const Label = styled.div`
     width: 460px;
     height: 50px;
     padding: 0 16px;
+    border-radius: 10px;
   }
   button {
     position: absolute;
@@ -33,6 +50,7 @@ const Label = styled.div`
     font-size: 14px;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
   }
   button:hover {
     transition: 0.8s;

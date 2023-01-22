@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Form from "./Form";
+import TodoList from "./ToDoList";
+
 function App() {
   return (
     <Box className="App">
       <h1 className="hover-5">Todo list</h1>
       <Form />
+      <TodoList />
     </Box>
   );
 }

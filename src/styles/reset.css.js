@@ -26,6 +26,9 @@ const GlobalStyles = createGlobalStyle`
     li {
       list-style-type: none;
     }
+    button{
+      cursor: pointer;
+    }
 `;
 
 export default GlobalStyles;

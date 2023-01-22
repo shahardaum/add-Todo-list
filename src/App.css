@@ -41,3 +41,10 @@
   padding-top: 4rem;
   border-radius: 8px;
 }
+ul {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 300px;
+  background-color: white;
+}

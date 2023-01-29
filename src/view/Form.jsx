@@ -20,7 +20,11 @@ const Form = () => {
         placeholder="Your Next Task"
         onInput={(e) => setInput(e.target.value)}
       ></input>
-      <button onClick={handleAddTodo}>Add Todo</button>
+      <button
+        onClick={input.length > 0 ? handleAddTodo : console.log("try again")}
+      >
+        Add Todo
+      </button>
     </Label>
   );
 };

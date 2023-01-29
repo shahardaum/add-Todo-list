@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
 
 const Todo = (props) => {
+  const { id, text, onCheck, completed } = props;
+  const [isSelected, setSelected] = useState(completed);
+
   const deleteTodo = () => {
-    props.onCheck(props.id);
+    onCheck(id);
   };
+  const changeCompleted = () => {
+    setSelected((prev) => !isSelected);
+  };
+
   return (
     <Box className="todo">
-      <label class="container">
-        {props.text}
-        <input type="checkbox"></input>
-        <span class="checkmark"></span>
+      <label className="container">
+        {text}
+        <input type="checkbox" onClick={() => changeCompleted()}></input>
+        <span className="checkmark"></span>
       </label>
       <FaTrashAlt className="trash-btn" onClick={() => deleteTodo()} />
     </Box>
@@ -27,11 +34,11 @@ const Box = styled.div`
   flex-direction: wrap;
   justify-content: space-around;
   border-bottom: 1px solid purple;
-  height: 80px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  height: 60px;
+  margin-top: 20px;
 
   .trash-btn {
+    margin-top: 10px;
     height: 15px;
     width: 15px;
     cursor: pointer;
@@ -43,17 +50,19 @@ const Box = styled.div`
     border-radius: 2px;
   }
   .container {
-    display: block;
+    display: flex;
+    flex-basis: 50%;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin-right: 75px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin-right: 255px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .container input {
     position: absolute;
